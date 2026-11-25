@@ -1,0 +1,79 @@
+# Sample ERP Bulk-Upload Column-Mapping Schema
+# Select a profile with --erp-profile (epicor_p21, netsuite, quickbooks)
+# or copy and customize this file for your ERP import template.
+
+version: "1.0"
+default_profile: "epicor_p21"
+
+profiles:
+  epicor_p21:
+    description: "Epicor Prophet 21 Item Cost Update CSV"
+    delimiter: ","
+    quote_string_columns: true
+    decimal_places: 4
+    columns:
+      - target: "item_id"
+        source: "erp_sku"
+        type: "string"
+      - target: "supplier_part_no"
+        source: "vendor_part_no"
+        type: "string"
+      - target: "purchase_uom"
+        source: "new_uom"
+        type: "string"
+      - target: "new_cost"
+        source: "new_cost"
+        type: "decimal"
+      - target: "old_cost"
+        source: "old_cost"
+        type: "decimal"
+      - target: "pct_change"
+        source: "pct_change"
+        type: "decimal"
+      - target: "effective_date"
+        source: "effective_date"
+        type: "string"
+
+  netsuite:
+    description: "Oracle NetSuite Vendor Item Cost CSV Import"
+    delimiter: ","
+    quote_string_columns: true
+    decimal_places: 4
+    columns:
+      - target: "Internal_SKU"
+        source: "erp_sku"
+        type: "string"
+      - target: "Vendor_Code"
+        source: "vendor_part_no"
+        type: "string"
+      - target: "Purchase_Unit"
+        source: "new_uom"
+        type: "string"
+      - target: "Purchase_Price"
+        source: "new_cost"
+        type: "decimal"
+      - target: "Effective_Date"
+        source: "effective_date"
+        type: "string"
+
+  quickbooks:
+    description: "QuickBooks Enterprise Item List Cost Update CSV"
+    delimiter: ","
+    quote_string_columns: true
+    decimal_places: 2
+    columns:
+      - target: "Item"
+        source: "erp_sku"
+        type: "string"
+      - target: "MPN"
+        source: "vendor_part_no"
+        type: "string"
+      - target: "U/M"
+        source: "new_uom"
+        type: "string"
+      - target: "Cost"
+        source: "new_cost"
+        type: "decimal"
+      - target: "Sales_Price"
+        source: "sell_price"
+        type: "decimal"

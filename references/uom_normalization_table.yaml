@@ -1,0 +1,129 @@
+# Canonical UOM Normalization Table for Wholesale and Industrial Price Lists
+# Loaded by scripts/diff_erp_costs.py to detect unit-of-measure traps.
+
+version: "1.0"
+
+high_risk_tokens:
+  - "C"
+  - "M"
+
+canonical_uoms:
+  EA:
+    description: "Each / single unit"
+    pricing_basis_qty: 1
+    high_risk_multiplier_trap: false
+    aliases:
+      - "EA"
+      - "EACH"
+      - "EA."
+      - "PC"
+      - "PCS"
+      - "PIECE"
+      - "PIECES"
+      - "UNIT"
+      - "UN"
+      - "1"
+  C:
+    description: "Per 100 units (industrial hundred-count pricing)"
+    pricing_basis_qty: 100
+    high_risk_multiplier_trap: true
+    aliases:
+      - "C"
+      - "/C"
+      - "PER C"
+      - "PER 100"
+      - "PER100"
+      - "100"
+      - "HUNDRED"
+      - "HD"
+      - "CWT"
+  M:
+    description: "Per 1000 units (industrial thousand-count pricing)"
+    pricing_basis_qty: 1000
+    high_risk_multiplier_trap: true
+    aliases:
+      - "M"
+      - "/M"
+      - "PER M"
+      - "PER 1000"
+      - "PER1000"
+      - "1000"
+      - "THOUSAND"
+      - "TH"
+  BX:
+    description: "Box (variable pack quantity)"
+    pricing_basis_qty: null
+    high_risk_multiplier_trap: false
+    aliases:
+      - "BX"
+      - "BOX"
+      - "BOXES"
+  CS:
+    description: "Case or carton (variable pack quantity)"
+    pricing_basis_qty: null
+    high_risk_multiplier_trap: false
+    aliases:
+      - "CS"
+      - "CASE"
+      - "CASES"
+      - "CTN"
+      - "CARTON"
+  PK:
+    description: "Pack or package"
+    pricing_basis_qty: null
+    high_risk_multiplier_trap: false
+    aliases:
+      - "PK"
+      - "PKG"
+      - "PACK"
+      - "PACKS"
+  DZ:
+    description: "Dozen (12 units)"
+    pricing_basis_qty: 12
+    high_risk_multiplier_trap: false
+    aliases:
+      - "DZ"
+      - "DOZ"
+      - "DOZEN"
+  PR:
+    description: "Pair (2 units)"
+    pricing_basis_qty: 2
+    high_risk_multiplier_trap: false
+    aliases:
+      - "PR"
+      - "PAIR"
+      - "PAIRS"
+  FT:
+    description: "Linear foot"
+    pricing_basis_qty: 1
+    high_risk_multiplier_trap: false
+    aliases:
+      - "FT"
+      - "FOOT"
+      - "FEET"
+      - "LF"
+  LB:
+    description: "Pound"
+    pricing_basis_qty: 1
+    high_risk_multiplier_trap: false
+    aliases:
+      - "LB"
+      - "LBS"
+      - "POUND"
+      - "POUNDS"
+  RL:
+    description: "Roll"
+    pricing_basis_qty: null
+    high_risk_multiplier_trap: false
+    aliases:
+      - "RL"
+      - "ROLL"
+      - "ROLLS"
+  BG:
+    description: "Bag"
+    pricing_basis_qty: null
+    high_risk_multiplier_trap: false
+    aliases:
+      - "BG"
+      - "BAG"
+      - "BAGS"
